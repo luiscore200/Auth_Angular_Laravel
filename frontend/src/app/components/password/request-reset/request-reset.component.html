@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Reset Password</div>
+                <div class="card-body">
+                    
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()" id="form">
+                        <div class="alert alert-danger" [hidden]="!error">{{error}}</div>
+
+
+                        <div class="mb-3">
+                            <label for="inputEmail3" class="form-label">Email</label>
+                            <input type="email" class="form-control" formControlName="email" id="inputEmail3" placeholder="Email"
+                                [ngClass]="{
+                                    'is-invalid': emailControl.invalid && emailControl.touched,
+                                    'is-valid': emailControl.valid && emailControl.touched
+                                }">
+                            <div class="invalid-feedback" *ngIf="emailControl.invalid && emailControl.touched">
+                                <div *ngIf="emailControl.hasError('required')">El campo es requerido</div>
+                                <div *ngIf="emailControl.hasError('email')">Email inválido</div>
+                            </div>
+                        </div>
+               
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]="this.form.invalid">Send Email</button>
+                         
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
