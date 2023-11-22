@@ -20,6 +20,9 @@ url:string = 'http://127.0.0.1:8000/api'
   sendPasswordResetLink(objeto:User):Observable<User>{
     return this.http.post<User>(this.url+'/sendPasswordResetLink', objeto);
   }
+  ChangePassword(objeto:User):Observable<User>{
+    return  this.http.post<User>(this.url+'/resetPassword', objeto);
 
+  }
  
 }

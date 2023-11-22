@@ -13,6 +13,7 @@ export class RequestResetComponent {
   form:FormGroup;
   emailControl:any;
   error!:any;
+  msg!:any;
 
   constructor (private fb:FormBuilder,private api:ApiServiceService){
       this.form=this.fb.group({ email: ['', [Validators.required, Validators.email]]});
@@ -25,15 +26,24 @@ export class RequestResetComponent {
   onSubmit():void{
     if(this.form.valid){
       this.api.sendPasswordResetLink(this.form.value).subscribe(
-        data=>console.log(data),
-        error=>console.log(error)
+        data=>this.handleResponse(data),
+        error=>this.handleError(error)
       );
-      this.handleResponse();
+      this.error=null;
+      this.msg=null;
+     
     }
   }
 
-  handleResponse():void {
+  handleResponse(data:any):void {
+    this.msg =data.message;
+    console.log(data);
     this.form.reset();
   
   }
+  handleError(error:any):void {
+    this.error = error.error.error;
+    console.log(error);
+  }
+
 }

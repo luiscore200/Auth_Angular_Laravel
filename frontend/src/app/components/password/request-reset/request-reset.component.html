@@ -6,9 +6,10 @@
                 <div class="card-body">
                     
                     <form [formGroup]="form" (ngSubmit)="onSubmit()" id="form">
-                        <div class="alert alert-danger" [hidden]="!error">{{error}}</div>
-
-
+                      
+                        <div class="alert" [ngClass]="{'alert-danger': error, 'alert-success': msg}" [hidden]="!error && !msg">
+                            {{ error ? error : msg }}
+                          </div>
                         <div class="mb-3">
                             <label for="inputEmail3" class="form-label">Email</label>
                             <input type="email" class="form-control" formControlName="email" id="inputEmail3" placeholder="Email"

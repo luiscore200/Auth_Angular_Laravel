@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('sendPasswordResetLink',[ResetPasswordController::class,'sendPasswordResetLink']);
+Route::post('resetPassword',[ResetPasswordController::class,'resetPassword']);
 
 
 Route::get('logout',[AuthController::class,'logout']);

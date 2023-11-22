@@ -33,7 +33,7 @@ const appRoutes:Routes =[
 {
   path: 'response-password-reset',
   component: ResponseResetComponent,
-  canActivate: [AfterloginService]
+  canActivate: [BeforeloginService]
 },
 
 ]
